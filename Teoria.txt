@@ -55,4 +55,7 @@ $ now
 Estilos componenets
 $ npm i styled-components
 
+iconos en react
+npm i react-icons
+
 /*********************************************/
