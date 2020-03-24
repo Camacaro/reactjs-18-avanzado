@@ -58,6 +58,9 @@ $ npm i styled-components
 iconos en react
 npm i react-icons
 
+Progress bar
+npm install --save react-top-loading-bar
+
 /*********************************************/
 
 HOOKS
@@ -79,3 +82,39 @@ useDEbugValue:
 
 
 /*********************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Links
+https://zeit.co/dashboard
+
+React
+https://zeit.co/camacaro/petgram-react-jcamacaro/29zjboc7h
+https://petgram-react-jcamacaro-29zjboc7h.now.sh/
+
+node
+https://zeit.co/camacaro/petgram-server-jcamacaro/ovdyazczh
+
+https://petgram-server-jcamacaro.camacaro.now.sh/categories
