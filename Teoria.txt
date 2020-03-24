@@ -1,0 +1,58 @@
+$npm init -y
+
+instalar webpack
+$ npm i webpack webpack-cli --save-dev
+
+/*******************************************/
+compilar un archivo con webpack
+
+ir a la terminal 
+$ ./node_modules/.bin/webpack src/index.js
+esto nos generara una carpeta dis con el archivo main
+
+ahora para ver en la web intalamos un paquete para la web
+$ npm i html-webpack-plugin --save-dev
+luego de esto hay que crear un archivo llamado webpack.config.js
+con eso añadimos la configuracion de nuestro webpack
+
+creamos un script para levantar el webpack
+
+ahora hay que instalar el servidor de webpack
+$ npm i webpack-dev-server --save-dev
+ahora añadimos un script para lanzarlo
+
+/*******************************************/
+
+instalando react
+npm i react react-dom
+
+/*********************************************/
+
+instalando babel 
+npm i @babel/core @babel/preset-env babel-loader @babel/preset-react save-dev
+
+configurando webpack con babel
+/*********************************************/
+
+instalando standarres de js
+$ npm i standard --save-dev
+
+ahora para utilizarlo añadimos un script
+ignorar archivos para el lint en el package.json
+"standard":{
+    "ignore":[
+        "/api/**"
+    ]
+}
+config 
+eslintConfig
+
+levantando el servio en internet con now
+hay que crear una configuracion de now.jsony y ejecutar 
+$ now
+/*********************************************/
+
+Estilos componenets
+$ npm i styled-components
+
+/*********************************************/
