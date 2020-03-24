@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import { fadeIn } from "../../styles/animation";
 
 export const Anchor = styled.a `
+    ${fadeIn()}
     display: flex;
     flex-direction: column;
     text-align: center;

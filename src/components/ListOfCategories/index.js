@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 // import { categories as mockCategories } from '../../../api/db.json'
@@ -11,6 +11,8 @@ export const ListOfCategories = () => {
     que asignamos en el useState , el segundo es una funcion (setCategories) que se encargara
     de cambiar los valores del estado inicial (categories)*/ 
     const [categories, setCategories] = useState([]);
+
+    const [showFixed, setShowFixed] = useState(false);
 
     // Esto se ejecuta cada vez que se renderiza este componente
     // useEffect( function, efectos_para_ejecutarse )
@@ -25,8 +27,31 @@ export const ListOfCategories = () => {
     }, [] )
 
 
-    return (
-        <List>
+    // este toma un efecto de listener, porque se ejecuta cada vez qeu se renderiza el componente
+    useEffect( function() {
+        const onScroll = e => {
+            const newShowFixed = window.scrollY > 200 
+
+            // si estos dos son diferentes ejecuta  setShowFixed
+            showFixed !== newShowFixed && setShowFixed(newShowFixed)
+        }
+
+        // escuchar el evento del scroll
+        document.addEventListener('scroll', onScroll )
+
+        // vamos a limpiar el efecto de escuchar el scroll 
+        // porque sino lo dejariamos en memoria 
+        // cada vez que se renderice se ejecuta y se limpia
+        return () => { 
+            document.removeEventListener('scroll', onScroll )
+        }
+
+        // ahora le añadimos una dependencia, se ejecutara cada vez
+        // que showFixed cambie de estado 
+    }, [showFixed] )
+
+    const renderList = (fixed) => (
+        <List className={fixed ? 'fixed': ''} >
             {
                 categories.map( category => 
                 
@@ -39,5 +64,13 @@ export const ListOfCategories = () => {
                 )
             }
         </List>
+    )
+
+
+    return (
+        <Fragment>
+            {renderList()}
+            {showFixed && renderList(true)}
+        </Fragment>
     )
 }
