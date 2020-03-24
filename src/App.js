@@ -1,7 +1,6 @@
 import React from 'react'
-import { Category } from './components/Category'
 import { ListOfCategories } from './components/ListOfCategories'
-import { GlobalStyle } from './GlobalStyles'
+import { GlobalStyle } from '../src/styles/GlobalStyles'
 import { ListOfPhotoCards } from './components/ListOfPhotoCard'
 import { Logo } from './components/Logo'
 

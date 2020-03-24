@@ -59,3 +59,23 @@ iconos en react
 npm i react-icons
 
 /*********************************************/
+
+HOOKS
+disponble apartir de las verisones >= 16.8.0 
+useState: añadir un estado local al componente useState(valorInitial)
+useEffect: ejecuta una funcion cada vez que renderizamos el componente useEffect(function, [])
+useContext: nos permite acceder al contextAPI y obtener los valores(props) de nuestra app
+
+Hooks auxiliares
+useReducer: nos ayuda actualizar nuestro componenets como lo hacemos con redux
+
+useCallback: 
+useMemo:        nos permite coger referencia del elementos del DOM
+useRef:
+
+useImperativeHandle:
+useLayoutEffect:        nos permite acceder a valores sin tener que poner console logs 
+useDEbugValue:
+
+
+/*********************************************/
