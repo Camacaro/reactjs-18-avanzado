@@ -83,6 +83,10 @@ useDEbugValue:
 
 /*********************************************/
 
+Polyfill
+
+npm install intersection-observer
+
 
 
 
