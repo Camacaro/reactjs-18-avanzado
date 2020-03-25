@@ -104,6 +104,12 @@ Conexion a otras APIs   Conexion directa con base de datos
 
 $ npm i apollo-boost react-apollo graphql 
 
+se configura en el index principal de toda la app 
+
+Tips: Los container se encargan de hacer los Fetching de nuestros datos
+
+Render Props
+no renderiza un componente sino una funcion -> props 
 /*********************************************/
 
 
