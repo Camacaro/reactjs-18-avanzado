@@ -8,7 +8,8 @@ import { gql } from 'apollo-boost';
 
 // si quiero recibir por parametro con los props se lo mando igual solo que $categoryId
 // es el key del prop
-export const withPhotos = graphql(gql `
+
+const GET_PHOTOS = gql `
     query getPhotos($categoryId: ID) {
         photos(categoryId: $categoryId) {
             id
@@ -19,4 +20,5 @@ export const withPhotos = graphql(gql `
             liked
         }
     } 
-`)
+`
+export const withPhotos = graphql(GET_PHOTOS)

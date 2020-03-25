@@ -22,7 +22,7 @@ export const App = () => {
                 ? <PhotoCardWithQuery id={detailId} />
                 : <Fragment>
                     <ListOfCategories />
-                    <ListOfPhotoCards categoryId={3} />
+                    <ListOfPhotoCards  />
                 </Fragment>
             }
         </div>
