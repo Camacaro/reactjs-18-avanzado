@@ -89,6 +89,24 @@ npm install intersection-observer
 
 
 
+/*********************************************/
+
+GraphQL y React Apollo
+GraphQL no sustituye REST API
+
+* GraphQL es un lenguaje y se puede conectar a cualquier tipo de api
+
+GraphQL                 REST
+lenguaje                Arquitectura
+Un solo endPoint        Multiples endPoint
+Fetching justo          Over y underfetching
+Conexion a otras APIs   Conexion directa con base de datos
+
+$ npm i apollo-boost react-apollo graphql 
+
+/*********************************************/
+
+
 
 
 
