@@ -112,6 +112,21 @@ Render Props
 no renderiza un componente sino una funcion -> props 
 /*********************************************/
 
+Reach Router
+
+npm i @reach/router
+
+cuando utizo webpack  en el package
+"dev": "webpack-dev-server --history-api-fallback",
+uso esa bandera para que pueda dectectar las rutas 
+
+ahora en el webpack hay que decirle que el public path
+comenzara en / 
+output: {
+    filename: 'app.bundle.js'
+    publicPath: '/'
+},
+/*********************************************/ 
 
 
 

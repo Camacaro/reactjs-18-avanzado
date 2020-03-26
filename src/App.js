@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
-import { ListOfCategories } from './components/ListOfCategories'
+import React from 'react'
 import { GlobalStyle } from '../src/styles/GlobalStyles'
-import { ListOfPhotoCards } from './container/ListOfPhotoCards'
 import { Logo } from './components/Logo'
 import { PhotoCardWithQuery } from './container/PhotoCardWithQuery'
+import { Home } from './pages/Home'
+import { Router } from '@reach/router'
 
 export const App = () => {
     
@@ -20,10 +20,10 @@ export const App = () => {
             {
                 detailId 
                 ? <PhotoCardWithQuery id={detailId} />
-                : <Fragment>
-                    <ListOfCategories />
-                    <ListOfPhotoCards  />
-                </Fragment>
+                : <Router>
+                    <Home path='/' />
+                    <Home path='/pet/:id' />
+                </Router> 
             }
         </div>
     )
