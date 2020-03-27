@@ -126,6 +126,10 @@ output: {
     filename: 'app.bundle.js'
     publicPath: '/'
 },
+
+con Link reemplazamos las etiquetas <a/>
+un comportamiento que tiene Link que al redireccionar 
+este se enfoca en el componente
 /*********************************************/ 
 
 
