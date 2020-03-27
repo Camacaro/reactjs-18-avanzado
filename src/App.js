@@ -6,13 +6,24 @@ import { Home } from './pages/Home'
 import { Router } from '@reach/router'
 import { Detail } from './pages/Detail'
 import NavBar from './components/NavBar'
+import User from './pages/User'
+import Favs from './pages/Favs'
+import NotRegisteredUser from './pages/NotRegisteredUser'
+
+
+// esto es un componente con render props 
+const UserLogged = ({children}) => {
+    // al children el componente que estara dentro de el recibira una 
+    // funcion donde podre obtener ela autentificacion y poder redireccionar
+    return children({isAuth: false})
+}
 
 
 export const App = () => {
     
-    const urlParams = new window.URLSearchParams( window.location.search )
+    // const urlParams = new window.URLSearchParams( window.location.search )
 
-    const detailId = urlParams.get('detail') 
+    // const detailId = urlParams.get('detail') 
 
     // console.log(detailId);
 
@@ -26,6 +37,27 @@ export const App = () => {
                 <Home path='/pet/:id' />
                 <Detail path='/detail/:detailId' />
             </Router> 
+
+            
+            <UserLogged>
+                {
+                    // recuperamos el objecto isAuth que nos retorna la funcion
+                    ({isAuth}) => 
+                        isAuth 
+                        ? <Router>
+                            <User  path='/user'/>
+                            <Favs path='/favs' />
+                        </Router>
+                        : <Router>
+                            <NotRegisteredUser path='/user'  />
+                            <NotRegisteredUser path='/favs'  />
+                        </Router>
+                    
+                }  
+            </UserLogged>
+            
+
+            
 
             <NavBar />
 
