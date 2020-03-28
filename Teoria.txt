@@ -132,6 +132,11 @@ un comportamiento que tiene Link que al redireccionar
 este se enfoca en el componente
 /*********************************************/ 
 
+contextAPI
+Crear el context y agregar en el index.html
+
+/*********************************************/ 
+
 
 
 

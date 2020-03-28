@@ -4,6 +4,7 @@ import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import { App } from './App'
+import Context from './Context'
 
 const cache = new InMemoryCache()
 
@@ -16,10 +17,16 @@ const client = new ApolloClient({
     link
 })
 
+
+
 // ReactDom.render(<App/>, document.getElementById('app'))
 
 ReactDom.render(
-    <ApolloProvider client={client}>
-        <App/>
-    </ApolloProvider>, 
+    // value={ {isAuth: false}}
+    // ese props ya se esta pasandode manera global en el archivo Contex
+    <Context.Provider  >
+        <ApolloProvider client={client}>
+            <App/>
+        </ApolloProvider>
+    </Context.Provider>, 
 document.getElementById('app'))

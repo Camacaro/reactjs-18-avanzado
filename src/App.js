@@ -8,15 +8,17 @@ import { Detail } from './pages/Detail'
 import NavBar from './components/NavBar'
 import User from './pages/User'
 import Favs from './pages/Favs'
-import NotRegisteredUser from './pages/NotRegisteredUser'
+import {NotRegisteredUser} from './pages/NotRegisteredUser'
+import Context from './Context'
 
 
+// Esto lo vamos a sustituir con el Context.Comsumer, funciona igual con el render props
 // esto es un componente con render props 
-const UserLogged = ({children}) => {
-    // al children el componente que estara dentro de el recibira una 
-    // funcion donde podre obtener ela autentificacion y poder redireccionar
-    return children({isAuth: false})
-}
+// const UserLogged = ({children}) => {
+//     // al children el componente que estara dentro de el recibira una 
+//     // funcion donde podre obtener ela autentificacion y poder redireccionar
+//     return children({isAuth: false})
+// }
 
 
 export const App = () => {
@@ -39,7 +41,8 @@ export const App = () => {
             </Router> 
 
             
-            <UserLogged>
+            {/* <UserLogged> */}
+            <Context.Consumer>    
                 {
                     // recuperamos el objecto isAuth que nos retorna la funcion
                     ({isAuth}) => 
@@ -54,7 +57,8 @@ export const App = () => {
                         </Router>
                     
                 }  
-            </UserLogged>
+            </Context.Consumer>
+            {/* </UserLogged> */}
             
 
             
