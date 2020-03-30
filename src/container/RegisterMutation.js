@@ -1,9 +1,6 @@
 import React from 'react'
-import { Mutation } from "react-apollo";
+import { Mutation, useMutation } from "react-apollo";
 import { gql } from "apollo-boost";
-
-
-Mutation
 
 const REGISTER = gql `
     mutation signup ($input: UserCredentials!) {
@@ -11,8 +8,15 @@ const REGISTER = gql `
     }
 `
 
-export const RegisterMutation = ({children}) => {
-    return <Mutation mutation={REGISTER}  >
-        {children}
-    </Mutation>
-}
+// export const RegisterMutation = ({children}) => {
+//     return <Mutation mutation={REGISTER}  >
+//         {children}
+//     </Mutation>
+// }
+
+export const useRegisterMutation = ( ) => {
+
+    const [register] = useMutation(REGISTER)
+
+    return register;
+} 

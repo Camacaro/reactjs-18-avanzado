@@ -22,5 +22,6 @@ const Provider = ({children}) => {
 
 export default {
     Consumer: Context.Consumer, 
-    Provider
+    Provider,
+    Created: Context
 } 
