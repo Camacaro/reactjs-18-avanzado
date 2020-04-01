@@ -44,11 +44,11 @@ import { useLoginMutation } from '../container/LoginMutation';
 
 export const NotRegisteredUser = () => {
 
+    const {isAuth, activateAuth} = useContext(Context.Created)
+
     const [register, dataRegister, loadingRegister, errorRegister] = useRegisterMutation()
 
     const [login, dataLogin, loadingLogin, errorLogin] = useLoginMutation();
-
-    const {isAuth, activateAuth} = useContext(Context.Created)
 
     const errorMsgRegister = errorRegister && 'El usuario ya existe o hay algún'
 
@@ -62,7 +62,13 @@ export const NotRegisteredUser = () => {
         const variables = { input }
 
         // console.log(isAuth);
-        register( {variables} ).then( activateAuth )
+        // register( {variables} ).then( activateAuth )
+        register( {variables} ).then( 
+            ({data}) => {
+                const {signup} = data;
+                activateAuth(signup)
+            }
+        )
     }
 
     const onSubmitLogin = ( {email, password} ) => {
@@ -73,7 +79,15 @@ export const NotRegisteredUser = () => {
         const variables = { input }
 
         // console.log(isAuth);
-        login( {variables} ).then( activateAuth )
+        // login( {variables} ).then( activateAuth )
+        login( {variables} ).then( 
+            ({data}) => {
+                // console.log(response);
+                // response.data.login
+                const {login} = data;
+                activateAuth(login)
+            }
+        )
     }
 
     return (
