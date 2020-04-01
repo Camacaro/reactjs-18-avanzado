@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Context from '../Context';
 import { UserForm } from '../useForm';
 import { useRegisterMutation } from '../container/RegisterMutation';
+import { useLoginMutation } from '../container/LoginMutation';
 
 // export const NotRegisteredUser = () => {
 //     return (
@@ -43,13 +44,17 @@ import { useRegisterMutation } from '../container/RegisterMutation';
 
 export const NotRegisteredUser = () => {
 
-    const [register, data, loading, error] = useRegisterMutation()
+    const [register, dataRegister, loadingRegister, errorRegister] = useRegisterMutation()
+
+    const [login, dataLogin, loadingLogin, errorLogin] = useLoginMutation();
 
     const {isAuth, activateAuth} = useContext(Context.Created)
 
-    const errorMsg = error && 'El usuario ya existe o hay algún'
+    const errorMsgRegister = errorRegister && 'El usuario ya existe o hay algún'
 
-    const onSubmit = ( {email, password} ) => {
+    const errorMsgLogin = errorLogin && 'La contraseña no es correcta o el usuario no existe'
+
+    const onSubmitRegister = ( {email, password} ) => {
 
         const input = {email, password}
         // console.log(input);
@@ -60,10 +65,21 @@ export const NotRegisteredUser = () => {
         register( {variables} ).then( activateAuth )
     }
 
+    const onSubmitLogin = ( {email, password} ) => {
+
+        const input = {email, password}
+        // console.log(input);
+
+        const variables = { input }
+
+        // console.log(isAuth);
+        login( {variables} ).then( activateAuth )
+    }
+
     return (
         <>
-            <UserForm title="Registrarse" onSubmit={onSubmit} error={errorMsg} disabled={loading} />
-            <UserForm title="Iniciar Sesion" onSubmit={activateAuth} />
+            <UserForm title="Registrarse" onSubmit={onSubmitRegister} error={errorMsgRegister} disabled={loadingRegister} />
+            <UserForm title="Iniciar Sesion" onSubmit={onSubmitLogin} error={errorMsgLogin} disabled={loadingLogin}  />
         </>
     );
 };
