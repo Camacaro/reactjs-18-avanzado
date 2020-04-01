@@ -43,9 +43,11 @@ import { useRegisterMutation } from '../container/RegisterMutation';
 
 export const NotRegisteredUser = () => {
 
-    const register = useRegisterMutation()
+    const [register, data, loading, error] = useRegisterMutation()
 
     const {isAuth, activateAuth} = useContext(Context.Created)
+
+    const errorMsg = error && 'El usuario ya existe o hay algún'
 
     const onSubmit = ( {email, password} ) => {
 
@@ -60,7 +62,7 @@ export const NotRegisteredUser = () => {
 
     return (
         <>
-            <UserForm title="Registrarse" onSubmit={onSubmit} />
+            <UserForm title="Registrarse" onSubmit={onSubmit} error={errorMsg} disabled={loading} />
             <UserForm title="Iniciar Sesion" onSubmit={activateAuth} />
         </>
     );
