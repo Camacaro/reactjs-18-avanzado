@@ -20,10 +20,13 @@ const client = new ApolloClient({
 	onError: error => {
 		console.log('Handle error index');
 		console.log(error);
+		console.log(error.response.errors[0].message);
 		
-		const { networkError } = error
+		const { networkError, graphQLErrors } = error
 		
-		if (networkError && networkError.result.code === 'invalid_token') {
+		if (networkError && networkError.result.code === 'invalid_token'
+			|| graphQLErrors && graphQLErrors[0].message === 'user does not exist'
+		) {
 			window.sessionStorage.removeItem('token')
 			window.location.href = '/'
 		}

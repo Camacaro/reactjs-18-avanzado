@@ -117,6 +117,10 @@ no renderiza un componente sino una funcion -> props
 Lo maravilloso de esto es que al hacer una peticion por el graphql y le pedimos que nos
 retorne las variables esta se actualizara en toda nuestra aplicacion porque reconocera esos ids 
 como pasa con los liked en las PhotoCard/index y su mutation de 
+
+fetchPolicy 
+nos sirve para decirle que no revice la cache de el sino que siempre
+busque en la red para mantenerlo siempre sincronizado 
 /*********************************************/
 
 Reach Router

@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
+import { FavsWithQuery } from '../container/GetFavorites';
 
 const Favs = () => {
     return (
-        <div>
+        <>
             <h1>Favs</h1>
-        </div>
+            <FavsWithQuery />
+        </>
     );
 };
 
