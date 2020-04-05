@@ -9,11 +9,14 @@ import { Link } from '@reach/router';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg'
 
-export const PhotoCard = ({id, likes = 0, src = DEFAULT_IMAGE}) => {
+// liked, este vendra del props que la mutation me regrese
+export const PhotoCard = ({id, liked, likes = 0, src = DEFAULT_IMAGE}) => {
 
-    const key = `like-${id}`
+    // ya esta parte no la vamos a necesitar porque estamos trayendo los datos desde el servidor 
 
-    const [liked, setLiked] = useLocalStorage(key, false)
+    // const key = `like-${id}`
+
+    // const [liked, setLiked] = useLocalStorage(key, false)
 
     const [show, articleRef] = useNearScreen();
 
@@ -45,9 +48,11 @@ export const PhotoCard = ({id, likes = 0, src = DEFAULT_IMAGE}) => {
                                 
                                 const handleFavClick = () => {
                                     
-                                    !liked && toggleLike( {variables: {input: {id} } } )
-                                    
-                                    setLiked(!liked)
+                                    toggleLike( {variables: {input: {id} } } )
+
+                                    // ya esta parte no la vamos a necesitar porque estamos trayendo los datos desde el servidor 
+                                    // !liked && toggleLike( {variables: {input: {id} } } )
+                                    //  setLiked(!liked)
                                 } 
                                 // // FavButton es nuestro children
                                 // nota: likes viene en un props de ListOfPhotoCardsComponent que esta asociado con  el container 
