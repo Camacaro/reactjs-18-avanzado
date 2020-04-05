@@ -1,5 +1,5 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query, useQuery } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import { ListOfFavs } from '../components/ListOfFavs';
 
@@ -33,3 +33,13 @@ export const FavsWithQuery = () => (
         { renderProp }
     </Query>
 )
+
+
+export const useGetFavorites = () => {
+    
+    const { data, error, loading } = useQuery( GET_FAVS, {
+        fetchPolicy: 'cache-and-network'
+    } ) 
+
+    return { data, error, loading }
+}
