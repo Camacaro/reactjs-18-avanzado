@@ -1,6 +1,8 @@
 import React from 'react'
 import { FavsWithQuery, useGetFavorites } from '../container/GetFavorites';
 import { ListOfFavs } from '../components/ListOfFavs';
+import { Helmet } from 'react-helmet'
+import { Layout } from '../components/Layouts';
 
 const Favs = () => {
 
@@ -9,8 +11,13 @@ const Favs = () => {
     const { favs } = data || { favs: [] }
 
     return (
-        <>
-            <h1>Favs</h1>
+        <Layout title='Tus favoritos' subtitle='aqui puedes enconrar tus favorios'>
+
+            {/* <Helmet>
+                <title> Petgram - Tus favoritos </title>
+                <meta name='description' content='aqui puedes enconrar tus favorios' />
+            </Helmet> */}
+            {/* <h1>Favs</h1> */}
             {/* <FavsWithQuery /> */}
 
             { loading && <p> Loading...</p> } 
@@ -18,7 +25,7 @@ const Favs = () => {
             { error &&  <p> Error ! </p> }
 
             { favs && <ListOfFavs favs={favs} /> }        
-        </>
+        </Layout>
     );
 };
 

@@ -148,7 +148,15 @@ Crear el context y agregar en el index.html
 
 /*********************************************/ 
 
+React Helmet
 
+Las SPA no necesariamente tienen mal SEO como se hace pensar. 
+React Helmet nos va a ayudar a manejar el SEO de nuestra aplicación para poder
+cambiar los meta, headers
+
+$ npm i react-helmet
+
+/*********************************************/ 
 
 
 
