@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GlobalStyle } from '../src/styles/GlobalStyles'
 import { Logo } from './components/Logo'
 // import { PhotoCardWithQuery } from './container/PhotoCardWithQuery'
 import { Home } from './pages/Home'
-import { Router } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 import { Detail } from './pages/Detail'
 import NavBar from './components/NavBar'
 import {User} from './pages/User'
 import Favs from './pages/Favs'
 import {NotRegisteredUser} from './pages/NotRegisteredUser'
 import Context from './Context'
+import { NotFound } from './pages/NotFound'
 
 
 // Esto lo vamos a sustituir con el Context.Comsumer, funciona igual con el render props
@@ -29,50 +30,75 @@ export const App = () => {
 
     // console.log(detailId);
 
+    const { isAuth } = useContext(Context.Created)
+
     return (
         <div>
             <GlobalStyle />
+
             <Logo />
 
             <Router>
+                <NotFound default />
                 <Home path='/' />
                 <Home path='/pet/:id' />
                 <Detail path='/detail/:detailId' />
+                { !isAuth && <NotRegisteredUser path='/login' /> }
+                { !isAuth && <Redirect noThrow from='/user' to='/login' /> }
+                { !isAuth && <Redirect noThrow from='/favs' to='/login' /> }
+                { isAuth && <Redirect noThrow from='/login' to='/' /> }
+                <User  path='/user'/>
+                <Favs path='/favs' />
             </Router> 
 
-            
-            {/* <UserLogged> */}
-            <Context.Consumer>    
-                {
-                    // recuperamos el objecto isAuth que nos retorna la funcion
-                    ({isAuth}) => 
-                        isAuth 
-                        ? <Router>
-                            <User  path='/user'/>
-                            <Favs path='/favs' />
-                        </Router>
-                        : <Router>
-                            <NotRegisteredUser path='/user'  />
-                            <NotRegisteredUser path='/favs'  />
-                        </Router>
-                    
-                }  
-            </Context.Consumer>
-            {/* </UserLogged> */}
-            
-
-            
-
             <NavBar />
-
-            {/* {
-                detailId 
-                ? <PhotoCardWithQuery id={detailId} />
-                : <Router>
-                    <Home path='/' />
-                    <Home path='/pet/:id' />
-                </Router> 
-            } */}
         </div>
     )
+
+    // return (
+    //     <div>
+    //         <GlobalStyle />
+    //         <Logo />
+
+    //         <Router>
+    //             <Home path='/' />
+    //             <Home path='/pet/:id' />
+    //             <Detail path='/detail/:detailId' />
+    //         </Router> 
+
+            
+    //         {/* <UserLogged> */}
+    //         <Context.Consumer>    
+    //             {
+    //                 // recuperamos el objecto isAuth que nos retorna la funcion
+    //                 ({isAuth}) => 
+    //                     isAuth 
+    //                     ? <Router>
+    //                         <User  path='/user'/>
+    //                         <Favs path='/favs' />
+    //                     </Router>
+    //                     : <Router>
+    //                         <NotRegisteredUser path='/user'  />
+    //                         <NotRegisteredUser path='/favs'  />
+    //                     </Router>
+                    
+    //             }  
+    //         </Context.Consumer>
+    //         {/* </UserLogged> */}
+            
+
+            
+
+    //         <NavBar />
+
+    //         {/* {
+    //             detailId 
+    //             ? <PhotoCardWithQuery id={detailId} />
+    //             : <Router>
+    //                 <Home path='/' />
+    //                 <Home path='/pet/:id' />
+    //             </Router> 
+    //         } */}
+    //     </div>
+    // )
 } 
