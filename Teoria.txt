@@ -201,6 +201,12 @@ $ npm i prop-types
 ejemplo FavBotton
 /*********************************************/ 
 
+PWA
+convertir pagina en pwa primero servir los archivos staticos
+
+$ npm run serve:dev
+/*********************************************/ 
+
 
 
 
