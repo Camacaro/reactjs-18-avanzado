@@ -183,6 +183,16 @@ para volver a compilar todo el proyecto haremos un script
 "serve:dev": "webpack --mode 'development' && npx serve dist -s"
 /*********************************************/ 
 
+cuando el lazy load de react tenemos que usar el componente Suspende
+el cual nos sirve para mostrar algo mientras se carga el componente que estae
+en el lazy <Suspense fallback={load} > </Suspense>
+
+si me da error en esto es porque 
+const Favs = React.lazy( () => import('./pages/Favs') )
+necesita que el componente sea por default y no un objecto
+
+/*********************************************/ 
+
 
 
 

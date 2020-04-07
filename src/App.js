@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 import { GlobalStyle } from '../src/styles/GlobalStyles'
 import { Logo } from './components/Logo'
 // import { PhotoCardWithQuery } from './container/PhotoCardWithQuery'
@@ -7,10 +7,12 @@ import { Router, Redirect } from '@reach/router'
 import { Detail } from './pages/Detail'
 import NavBar from './components/NavBar'
 import {User} from './pages/User'
-import Favs from './pages/Favs'
+// import Favs from './pages/Favs'
 import {NotRegisteredUser} from './pages/NotRegisteredUser'
 import Context from './Context'
 import { NotFound } from './pages/NotFound'
+
+const Favs = React.lazy( () => import('./pages/Favs') )
 
 
 // Esto lo vamos a sustituir con el Context.Comsumer, funciona igual con el render props
@@ -33,7 +35,7 @@ export const App = () => {
     const { isAuth } = useContext(Context.Created)
 
     return (
-        <div>
+        <Suspense fallback={ <h1> Cargando... </h1>} >
             <GlobalStyle />
 
             <Logo />
@@ -52,7 +54,7 @@ export const App = () => {
             </Router> 
 
             <NavBar />
-        </div>
+        </Suspense>
     )
 
     // return (
