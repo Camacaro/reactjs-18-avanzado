@@ -5,7 +5,7 @@ import { useNearScreen } from '../../hooks/useNearScreen';
 import { FavButton } from '../FavBotton';
 import { ToggleLikeMutation } from '../../container/ToggleLikeMutation';
 import { Link } from '@reach/router';
-
+import PropTypes from 'prop-types';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_150/v1555671700/category_cats.jpg'
 
@@ -68,3 +68,23 @@ export const PhotoCard = ({id, liked, likes = 0, src = DEFAULT_IMAGE}) => {
         </Article>
     );
 };
+
+
+PhotoCard.propTypes = {
+    id: PropTypes.string.isRequired,
+    liked: PropTypes.bool.isRequired,
+    src: PropTypes.string.isRequired,
+    likes: function (props, propName, componentName) {
+        const propValue = props[propName]
+
+        if ( propValue === undefined ) {
+            return new Error(`${propName} Value must be defined`)
+        }
+
+        if ( propValue < 0 ) {
+            return new Error(`${propName} Value must be greater than 0`)
+        }
+
+    }
+
+}

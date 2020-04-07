@@ -193,6 +193,14 @@ necesita que el componente sea por default y no un objecto
 
 /*********************************************/ 
 
+PropTypes
+
+para validar los tipos de datos de las props
+$ npm i prop-types
+
+ejemplo FavBotton
+/*********************************************/ 
+
 
 
 
