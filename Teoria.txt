@@ -158,6 +158,31 @@ $ npm i react-helmet
 
 /*********************************************/ 
 
+Performance 
+
+lo primero que hay que hacer es compilar el proyecto en
+modo developer y eso hay que decirselo al webpack
+
+$ ./node_modules/.bin/webpack --mode "development"
+
+ahora lo lanzamos con este comando (s: single page aplicacion)
+$ npx serve dis -s
+
+luego le damos en Performance y le damos en ell boton de recargar
+en la seccion de timings podemos ver el tiempo de renderizado de cada
+componentes 
+
+con react memo nos sirve para evitar renderizados innecesarios
+por ejemplo con las categorias al entrar esta vuelve a renderizarlas
+pero visualmente no pasa nada entonces utilizamos el memo para quitarlo
+
+// si las props que recibes no son diferentes no te vas a renderizar
+// sigue mostrando el anterior que estaba o sea el mismo componente
+
+para volver a compilar todo el proyecto haremos un script 
+"serve:dev": "webpack --mode 'development' && npx serve dist -s"
+/*********************************************/ 
+
 
 
 

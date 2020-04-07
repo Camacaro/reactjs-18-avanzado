@@ -37,7 +37,7 @@ function useCategoriesData() {
     return { categories, loading, loadingBarProgress }
 }
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
     
     const { categories, loading, loadingBarProgress } = useCategoriesData();
     
@@ -103,3 +103,7 @@ export const ListOfCategories = () => {
         </Fragment>
     )
 }
+
+// si las props que recibes no son diferentes no te vas a renderizar
+// sigue mostrando el anterior que estaba o sea el mismo componente
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)
