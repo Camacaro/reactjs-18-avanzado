@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://petgram-react-jcamacaro-pcw89v5h7.now.sh/",
+    "chromeWebSecurity": false,
+    "viewportWidth": 500,
+    "viewportHeight": 800
+}

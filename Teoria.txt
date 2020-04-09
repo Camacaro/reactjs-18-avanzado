@@ -205,8 +205,38 @@ PWA
 convertir pagina en pwa primero servir los archivos staticos
 
 $ npm run serve:dev
+
+uno de los errores que puede generar para ver lo de PWA es 
+1 colocar un noscript
+2 instalar el manifest $ npm i webpack-pwa-manifest -D
+3 ahora entrrar en la configuracion de webpack, y se coloca una configuracion en el plugin
+4 volver hacer los staticos
+
+ahora crear service worker, para darle soporte offline
+$ npm install workbox-webpack-plugin -D
+
+luego vamos al config webpack para agregar el plugin
+l a url que le pusimos https://res.cloudinary.com es de donde cargamos la imagenes
+
+luego hacer una compilacion a los archivos estaticos
+
+ahora nos toca cargar el servis worker y se pone es en 
+src/index.html
+
+al desplegar la app con 
+$ now
+aparecio un error con el png eso se arregle en el archivo now
 /*********************************************/ 
 
+testing con cypress
+$ npm i cypress -D
+
+lo lanzamos con
+$ ./node_modules/.bin/cypress open
+se crea un script en test para abrirlo
+en la ruta cypress/integration se crean los test
+en el cypress.json hace la configuracion base
+/*********************************************/
 
 
 
